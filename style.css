@@ -205,3 +205,4 @@ footer { background: var(--grain), #0f3577; border-top: 2px solid var(--sand); p
 .fb { display: inline-flex; align-items: center; gap: .45rem; color: var(--sand); text-decoration: none; font-weight: 700; }
 .fb svg { flex: none; }
 .fb:hover span { text-decoration: underline; }
+.fb + .fb { margin-left: 1rem; }
