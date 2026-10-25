@@ -1,7 +1,9 @@
 :root {
-  --blue: #1d4fa3;
-  --blue-dark: #12346f;
-  --yellow: #f6c400;
+  --blue: #0b4fd6;
+  --blue-dark: #0a2a6e;
+  --yellow: #d9b25a;
+  --gold: linear-gradient(115deg, #9a7425 0%, #d8b25c 22%, #f7e3a3 40%, #e2bd66 55%, #b08a35 75%, #f0d48a 100%);
+  --blue-gloss: linear-gradient(160deg, #3d8bff 0%, #0b4fd6 38%, #0838a8 70%, #061f66 100%);
   --ink: #15213a;
   --muted: #5d6a80;
   --bg: #ffffff;
@@ -127,4 +129,74 @@ footer .muted { color: #9fb2d3; }
   .section { padding-top: 3.2rem; padding-bottom: 3.2rem; }
   .steps, .perks { grid-template-columns: 1fr; }
   .call-fab { display: block; position: fixed; right: 16px; bottom: 16px; z-index: 30; background: var(--yellow); color: var(--ink); font-weight: 800; text-decoration: none; padding: .8rem 1.2rem; border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,.25); }
+}
+
+/* ===== Design pro : bleu brillant + doré satiné ===== */
+.gold, .slogan, .slogan-foot, .stars, .motto {
+  background: var(--gold); background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent !important;
+  -webkit-text-fill-color: transparent; text-shadow: none; filter: drop-shadow(0 1px 1px rgba(0,0,0,.25));
+  animation: sheen 6s ease-in-out infinite alternate;
+}
+.motto { filter: none; }
+@keyframes sheen { from { background-position: 0% 0; } to { background-position: 100% 0; } }
+.hero { background: radial-gradient(ellipse at 20% 10%, rgba(255,255,255,.22), transparent 45%), var(--blue-gloss); position: relative; }
+.hero::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,.08) 50%, transparent 60%); }
+.hero > * { position: relative; z-index: 1; }
+.hero h1 { text-shadow: 0 2px 12px rgba(0,0,0,.25); }
+.btn { background: var(--blue-gloss); box-shadow: inset 0 1px 0 rgba(255,255,255,.35), 0 6px 16px rgba(11,79,214,.3); }
+.btn-gold, .call-fab { background: var(--gold) !important; color: #2a1d00 !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 6px 18px rgba(0,0,0,.25); }
+.btn-ghost { background: transparent; box-shadow: none; }
+.btn-ghost:hover { background: rgba(255,255,255,.12); }
+.num { background: var(--gold); color: #2a1d00; box-shadow: inset 0 1px 0 rgba(255,255,255,.6), 0 3px 8px rgba(0,0,0,.15); }
+.quote { border-left-color: #c9a24a; }
+.price-card { border-top: 8px solid transparent; border-image: var(--gold) 1; border-image-slice: 1; border-radius: 0 0 24px 24px; }
+.perks li::before { background: var(--blue-gloss); }
+.nav { border-bottom: 3px solid transparent; border-image: var(--gold) 1; }
+footer { background: var(--blue-gloss); }
+.section.alt { background: linear-gradient(180deg, #eef4ff, #e3edff); }
+.card, .step { border: 1px solid rgba(11,79,214,.08); }
+h2::after { content: ""; display: block; width: 64px; height: 3px; margin: .6rem auto 0; background: var(--gold); border-radius: 2px; }
+.split h2::after { margin-left: 0; }
+
+/* Lettrines dorées */
+.lead::first-letter, .sub::first-letter, .split > div > p:first-of-type::first-letter,
+.step p::first-letter, .card h3 + p::first-letter, .price-card > p:last-child::first-letter,
+details p::first-letter, .review::first-letter {
+  font-family: "Baloo 2", serif; font-weight: 800; font-size: 1.9em; line-height: 1;
+  background: var(--gold); -webkit-background-clip: text; background-clip: text;
+  color: transparent; -webkit-text-fill-color: transparent; padding-right: .04em;
+}
+.split > div > p:first-of-type::first-letter { float: left; font-size: 3.3em; line-height: .85; margin: .08em .1em 0 0; }
+
+/* Photos presse */
+.press { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.press figure { margin: 0; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.press img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.press figcaption { padding: .6rem .9rem; font-size: .9rem; color: var(--muted); }
+.press figcaption span { display: block; font-size: .78rem; opacity: .85; }
+@media (max-width: 900px) { .press { grid-template-columns: 1fr; } }
+
+/* Animation d'entrée */
+#intro { position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.18), transparent 50%), var(--blue-gloss); transition: opacity .6s ease, visibility .6s; cursor: pointer; }
+#intro.out { opacity: 0; visibility: hidden; }
+.intro-art { width: min(380px, 82vw); height: auto; }
+.intro-art .draw path, .intro-art .draw circle { stroke: #fff; stroke-width: 3; stroke-dasharray: 400; stroke-dashoffset: 400; animation: drawline 1.4s ease forwards; }
+.intro-art .cat path { animation-delay: .35s; }
+.intro-art .bub circle { stroke: rgba(255,255,255,.7); stroke-width: 2; transform-box: fill-box; transform-origin: center; opacity: 0; animation: bubble 2.2s ease-out infinite; }
+.intro-art .bub circle:nth-child(2n) { animation-delay: .6s; } .intro-art .bub circle:nth-child(3n) { animation-delay: 1.1s; }
+.intro-art .paws > g { fill: #e2bd66; opacity: 0; animation: paw .3s ease forwards; }
+.intro-art .paws > g:nth-child(1) { animation-delay: 1.2s; } .intro-art .paws > g:nth-child(2) { animation-delay: 1.5s; } .intro-art .paws > g:nth-child(3) { animation-delay: 1.8s; }
+.intro-art .paws ellipse, .intro-art .paws circle { stroke: none; }
+.intro-title { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: clamp(2.4rem, 8vw, 3.6rem); margin: .4rem 0 0; opacity: 0; animation: fadeup .6s 1s ease forwards, sheen 2s ease-in-out infinite alternate; }
+.intro-sub { color: #fff; font-weight: 700; margin: 0; opacity: 0; animation: fadeup .6s 1.3s ease forwards; }
+@keyframes drawline { to { stroke-dashoffset: 0; } }
+@keyframes bubble { 0% { opacity: 0; transform: translateY(10px) scale(.6); } 30% { opacity: 1; } 100% { opacity: 0; transform: translateY(-25px) scale(1.1); } }
+@keyframes paw { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeup { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .intro-art .draw path, .intro-art .draw circle { stroke-dashoffset: 0; }
+  .intro-title, .intro-sub, .intro-art .paws > g { opacity: 1; }
 }
