@@ -200,3 +200,8 @@ footer { background: var(--grain), #0f3577; border-top: 2px solid var(--sand); p
   .call-fab { display: block; position: fixed; right: 16px; bottom: 16px; z-index: 30; background: var(--sand); color: var(--ink); font-family: "Oswald", sans-serif; text-transform: uppercase; letter-spacing: .05em; text-decoration: none; padding: .7rem 1.2rem; border: 2px solid var(--ink); }
   .foot-bottom { justify-content: center; text-align: center; }
 }
+
+/* Facebook */
+.fb { display: inline-flex; align-items: center; gap: .45rem; color: var(--sand); text-decoration: none; font-weight: 700; }
+.fb svg { flex: none; }
+.fb:hover span { text-decoration: underline; }
